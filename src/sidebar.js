@@ -15,7 +15,7 @@ function showStatistics(selection) {
     return document.getElementById('stat-container')
   }
   
-  function createStatTable(title, emptyText, data) {
+  function createStatTable(title, emptyText, data) { 
     const statView = document.createElement('div')
     statView.className = 'stat-list__table'
   
