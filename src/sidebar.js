@@ -66,6 +66,20 @@ function showAllCards() {
 function showAllUsers() {
 
 
+    fetch("https://api.miro.com/v1/oauth-token", {
+  "method": "GET",
+  "headers": {
+    "Authorization": "Bearer " + oatk
+  }
+})
+.then(response => {
+  console.log(response);
+})
+.catch(err => {
+  console.error(err);
+});
+
+
 // Opens auth popup.
 // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
 // Method returns a token you can use to make requests REST API on behalf of the current user.
@@ -74,7 +88,8 @@ function showAllUsers() {
     //    console.log('oAuth authorize', result);
     //  })
 
-
+    console.log('oatk:',oatk)
+    
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
         "headers": {
@@ -100,6 +115,8 @@ miro.onReady(() => {
       })
 
 // Get OAuth token for current user to make requests REST API
+let oatk="a"
+
 miro.getToken().then( (token) =>{
     oatk=token
     console.log('oAuth token', oatk);
