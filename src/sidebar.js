@@ -78,7 +78,7 @@ function showAllUsers() {
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
         "headers": {
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + oatk
         }
     })
         .then(response => {
@@ -101,9 +101,11 @@ miro.onReady(() => {
 
 // Get OAuth token for current user to make requests REST API
 miro.getToken().then( (token) =>{
-    console.log('oAuth token', token);
+    oatk=token
+    console.log('oAuth token', oatk);
+
   })
-  
+
     miro.addListener('SELECTION_UPDATED', (e) => {
         showStatistics(e.data)
     })
