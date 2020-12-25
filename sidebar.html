@@ -1,14 +1,25 @@
 <html>
   <head>
-    <title>Miro Widget Counter</title>
+    <title>Miro Analyzer</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="sidebar__content">
       <div id="stat-container" class="stat-list">
-        <div class="stat-list__header">Widget Counter</div>
+        <div class="stat-list__header">Analyzer</div>
+        <div> 
+          <button onclick="showAllCards()">List all Cards</button>
+          <button onclick="showAllUsers()">List all Users</button>
+        </div>
       </div>
     </div>
+    <!--
+    <div>LIST / DOWNLOAD all</div>
+    <div>of Type TEXTS / STICKERS / SHAPES / CARDS / IMAGES / LINES </div>
+    <div>with ASSIGNEE = </div>
+    <div>with TITLE = </div>
+    <div>containing DESCRIPTION _________ </div>
+    -->
     <script src="https://miro.com/app/static/sdk.1.1.js"></script>
     <script src="src/sidebar.js"></script>
   </body>
