@@ -64,9 +64,9 @@ function showAllCards() {
 }
 
 function showAllUsers() {
-    console.log("getting Users with oauth token from local storage " + localStorage.getItem("MiroOA"))
 
-    au = miro.isAuthorized()
+
+    console.log('oAuthorized:', miro.isAuthorized())
 
 // Get OAuth token for current user to make requests REST API
 miro.getToken().then( (token) =>{
