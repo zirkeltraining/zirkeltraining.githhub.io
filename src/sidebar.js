@@ -66,18 +66,6 @@ function showAllCards() {
 function showAllUsers() {
 
 
-    miro.isAuthorized().then( (isAuthorized) => {
-        if (isAuthorized) {
-          console.log('Web plugin authorized');
-        } else {
-          console.log('Unauthorized');
-        }
-      })
-
-// Get OAuth token for current user to make requests REST API
-miro.getToken().then( (token) =>{
-    console.log('oAuth token', token);
-  })
 // Opens auth popup.
 // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
 // Method returns a token you can use to make requests REST API on behalf of the current user.
@@ -102,6 +90,20 @@ miro.getToken().then( (token) =>{
 }
 
 miro.onReady(() => {
+
+    miro.isAuthorized().then( (isAuthorized) => {
+        if (isAuthorized) {
+          console.log('Web plugin authorized');
+        } else {
+          console.log('Unauthorized');
+        }
+      })
+
+// Get OAuth token for current user to make requests REST API
+miro.getToken().then( (token) =>{
+    console.log('oAuth token', token);
+  })
+  
     miro.addListener('SELECTION_UPDATED', (e) => {
         showStatistics(e.data)
     })
