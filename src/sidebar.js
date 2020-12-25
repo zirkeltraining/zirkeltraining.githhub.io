@@ -66,7 +66,13 @@ function showAllCards() {
 function showAllUsers() {
 
 
-    console.log('oAuthorized:', miro.isAuthorized())
+    miro.isAuthorized().then( (isAuthorized) => {
+        if (isAuthorized) {
+          console.log('Web plugin authorized');
+        } else {
+          console.log('Unauthorized');
+        }
+      })
 
 // Get OAuth token for current user to make requests REST API
 miro.getToken().then( (token) =>{
@@ -75,19 +81,16 @@ miro.getToken().then( (token) =>{
 // Opens auth popup.
 // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
 // Method returns a token you can use to make requests REST API on behalf of the current user.
-    oat = miro.authorize({"response_type":"token"})
-
-    miro.authorize({"response_type":"token"}).then( (result) =>{
-        console.log('oAuth authorize', result);
-      })
-
-    console.log("oat:"+token)
+ 
+   // miro.authorize({"response_type":"token"}).then( (result) =>{
+    //    console.log('oAuth authorize', result);
+    //  })
 
 
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
         "headers": {
-            "Authorization": "Bearer " + oat
+            "Authorization": "Bearer " + token
         }
     })
         .then(response => {
