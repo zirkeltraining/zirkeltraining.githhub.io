@@ -65,10 +65,29 @@ function showAllCards() {
 
 function showAllUsers() {
     console.log("getting Users with oauth token from local storage " + localStorage.getItem("MiroOA"))
+
+    au = miro.isAuthorized()
+
+// Get OAuth token for current user to make requests REST API
+miro.getToken().then( (token) =>{
+    console.log('oAuth token', token);
+  })
+// Opens auth popup.
+// To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
+// Method returns a token you can use to make requests REST API on behalf of the current user.
+    oat = miro.authorize({"response_type":"token"})
+
+    miro.authorize({"response_type":"token"}).then( (result) =>{
+        console.log('oAuth authorize', result);
+      })
+
+    console.log("oat:"+token)
+
+
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
         "headers": {
-            "Authorization": "Bearer " + localStorage.getItem("MiroOA")
+            "Authorization": "Bearer " + oat
         }
     })
         .then(response => {
