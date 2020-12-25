@@ -57,13 +57,9 @@ function countBy(list, keyGetter) {
 }
 
 function showAllCards() {
-    console.log("getting Cards")
-    //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
-    cards = miro.board.widgets.get({type:'CARD'})
-    console.log (cards)
-}
 
-function showAllUsers() {
+
+    console.log('oatk:',oatk)
 
 
     fetch("https://api.miro.com/v1/oauth-token", {
@@ -80,6 +76,19 @@ function showAllUsers() {
 });
 
 
+
+    console.log("getting Cards")
+    //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
+    cards = miro.board.widgets.get({type:'CARD'})
+    console.log (cards)
+
+
+
+}
+
+function showAllUsers() {
+
+
 // Opens auth popup.
 // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
 // Method returns a token you can use to make requests REST API on behalf of the current user.
@@ -89,7 +98,7 @@ function showAllUsers() {
     //  })
 
     console.log('oatk:',oatk)
-    
+
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
         "headers": {
