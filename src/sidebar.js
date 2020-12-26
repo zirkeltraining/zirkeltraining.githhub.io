@@ -59,28 +59,28 @@ function countBy(list, keyGetter) {
 function showAllCards() {
 
 
-    console.log('oatk:',oatk)
+    console.log('oatk:'+oatk)
 
 
     fetch("https://api.miro.com/v1/oauth-token", {
-  "method": "GET",
-  "headers": {
-    "Authorization": "Bearer " + oatk
-  }
-})
-.then(response => {
-  console.log(response);
-})
-.catch(err => {
-  console.error(err);
-});
+        "method": "GET",
+        "headers": {
+            "Authorization": "Bearer " + oatk
+        }
+    })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => {
+            console.error(err);
+        });
 
 
 
     console.log("getting Cards")
     //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
-    cards = miro.board.widgets.get({type:'CARD'})
-    console.log (cards)
+    cards = miro.board.widgets.get({ type: 'CARD' })
+    console.log(cards)
 
 
 
@@ -89,15 +89,15 @@ function showAllCards() {
 function showAllUsers() {
 
 
-// Opens auth popup.
-// To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
-// Method returns a token you can use to make requests REST API on behalf of the current user.
- 
-   // miro.authorize({"response_type":"token"}).then( (result) =>{
+    // Opens auth popup.
+    // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
+    // Method returns a token you can use to make requests REST API on behalf of the current user.
+
+    // miro.authorize({"response_type":"token"}).then( (result) =>{
     //    console.log('oAuth authorize', result);
     //  })
 
-    console.log('oatk:',oatk)
+    console.log('oatk:'+oatk)
 
     fetch("https://api.miro.com/v1/teams/3074457352877196176/user-connections?limit=10&offset=0", {
         "method": "GET",
@@ -113,24 +113,26 @@ function showAllUsers() {
         });
 }
 
+oatk = "a"
+
 miro.onReady(() => {
 
-    miro.isAuthorized().then( (isAuthorized) => {
+    miro.isAuthorized().then((isAuthorized) => {
         if (isAuthorized) {
-          console.log('Web plugin authorized');
+            console.log('Web plugin authorized');
         } else {
-          console.log('Unauthorized');
+            console.log('Unauthorized');
         }
-      })
+    })
 
-// Get OAuth token for current user to make requests REST API
-oatk="a"
+    // Get OAuth token for current user to make requests REST API
 
-miro.getToken().then( (token) =>{
-    oatk=token
-    console.log('oAuth token', oatk);
 
-  })
+    miro.getToken().then((token) => {
+        oatk = token
+        console.log('oAuth token', oatk);
+
+    })
 
     miro.addListener('SELECTION_UPDATED', (e) => {
         showStatistics(e.data)
