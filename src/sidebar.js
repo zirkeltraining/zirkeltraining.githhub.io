@@ -124,7 +124,7 @@ miro.onReady(() => {
       })
 
 // Get OAuth token for current user to make requests REST API
-let oatk="a"
+oatk="a"
 
 miro.getToken().then( (token) =>{
     oatk=token
