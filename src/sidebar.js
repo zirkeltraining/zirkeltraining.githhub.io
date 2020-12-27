@@ -58,6 +58,27 @@ function countBy(list, keyGetter) {
 
 function showAllCards() {
 
+    console.log("getting Cards")
+    //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
+    cards = miro.board.widgets.get({ type: 'CARD' })
+    console.log(cards)
+    getContainer.appendChild(makeList(cards))
+}
+
+function makeList(cards) {
+    const widgetTable=document.createElement('table')
+    widgetTable.innerHTML="<th><td>Type</td><td>Title</td><td>Desc</td><td>Assignee</td></th>"
+    cards.forEach((type,title, description) => {
+        let itemLine=document.createElement('tr')
+        itemLine.innerHTML =               
+         `<td class="stat-list__item-name">${type.toLowerCase()}</td>` +
+         `<td class="stat-list__item-value">${title}</td>`
+        widgetTable.appendChild(itemLine)
+    })
+    return widgetTable
+}
+
+function showAllUsers() {
 
     console.log('oatk:'+oatk)
 
@@ -74,20 +95,6 @@ function showAllCards() {
         .catch(err => {
             console.error(err);
         });
-
-
-
-    console.log("getting Cards")
-    //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
-    cards = miro.board.widgets.get({ type: 'CARD' })
-    console.log(cards)
-
-
-
-}
-
-function showAllUsers() {
-
 
     // Opens auth popup.
     // To prevent the browser from blocking this popup, only call miro.authorize from a click handler on your domain.
