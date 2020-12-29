@@ -75,7 +75,7 @@ function removeTags(str) {
 
 function makeList(cards) {
     const widgetTable=document.createElement('table')
-    widgetTable.appendChild("<tr class='stat-list__title'><th>Type</th><th>Title</th><th>Desc</th><th>Assignee</th></tr>")
+    widgetTable.innerHTML=("<tr class='stat-list__title'><th>Type</th><th>Title</th><th>Desc</th><th>Assignee</th></tr>")
     cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
         try {assi=widget.assignee.userId} catch {assi="---"}
