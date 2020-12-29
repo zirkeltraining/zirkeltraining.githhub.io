@@ -83,7 +83,7 @@ function makeList(cards) {
          `<td class="stat-list__item">${widget.type.substring(0,2)}</td>` +
          `<td class="stat-list__item">${removeTags(widget.title)}</td>` + 
          `<td class="stat-list__item"> ${removeTags(widget.description)}</td>` + 
-         `<td class="stat-list__item"> ${assi.substring(assi.length()-3,3)}</td>` 
+         `<td class="stat-list__item"> ${assi.substring(assi.length-3,3)}</td>` 
          console.log(itemLine)
         widgetTable.appendChild(itemLine)
     })
