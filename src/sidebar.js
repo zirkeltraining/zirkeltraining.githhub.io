@@ -77,7 +77,7 @@ function makeList(cards) {
          `<td> ${widget.description.replace( /(<([^>]+)>)/ig, "")}</td>` + 
          `<td> ${assi}</td>` 
          console.log(itemLine)
-        //widgetTable.appendChild(itemLine)
+        widgetTable.appendChild(itemLine)
     })
     return widgetTable
 }
