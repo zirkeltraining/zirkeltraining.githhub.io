@@ -56,11 +56,11 @@ function countBy(list, keyGetter) {
     return new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
 }
 
-function showAllCards() {
+async function showAllCards() {
 
     console.log("getting Cards")
     //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
-    cards = miro.board.widgets.get({ type: 'CARD' })
+    cards = await miro.board.widgets.get({ type: 'CARD' })
     console.log(cards)
     getContainer.appendChild(makeList(cards))
 }
@@ -68,12 +68,16 @@ function showAllCards() {
 function makeList(cards) {
     const widgetTable=document.createElement('table')
     widgetTable.innerHTML="<th><td>Type</td><td>Title</td><td>Desc</td><td>Assignee</td></th>"
-    cards.forEach((type,title, description) => {
+    cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
+        if exists(widget.assignee.userId) {assi=widget.assignee.userId }else {assi="n/a"}
         itemLine.innerHTML =               
-         `<td class="stat-list__item-name">${type.toLowerCase()}</td>` +
-         `<td class="stat-list__item-value">${title}</td>`
-        widgetTable.appendChild(itemLine)
+         `<td class="stat-list__item-name">${widget.type}</td>` +
+         `<td class="stat-list__item-value">${widget.title.replace( /(<([^>]+)>)/ig, "")}</td>` + 
+         `<td> ${widget.description.replace( /(<([^>]+)>)/ig, "")}</td>` + 
+         `<td> ${assi}</td>` 
+         console.log(itemLine)
+        //widgetTable.appendChild(itemLine)
     })
     return widgetTable
 }
