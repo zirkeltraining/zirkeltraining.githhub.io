@@ -78,12 +78,12 @@ function makeList(cards) {
     widgetTable.innerHTML="<tr class='stat-list__title'><th>Type</th><th>Title</th><th>Desc</th><th>Assignee</th></tr>"
     cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
-        try {assi=widget.assignee.userId} catch {assi="-"}
+        try {assi=widget.assignee.userId} catch {assi="---"}
         itemLine.innerHTML =               
          `<td class="stat-list__item">${widget.type.substring(0,2)}</td>` +
          `<td class="stat-list__item">${removeTags(widget.title)}</td>` + 
          `<td class="stat-list__item"> ${removeTags(widget.description)}</td>` + 
-         `<td class="stat-list__item"> ${assi.substring(assi.length-3,3)}</td>` 
+         `<td class="stat-list__item"> ${assi.substring(assi.length-3,assi.length)}</td>` 
          console.log(itemLine)
         widgetTable.appendChild(itemLine)
     })
