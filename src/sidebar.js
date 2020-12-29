@@ -64,17 +64,24 @@ async function showAllCards() {
     console.log(cards)
     getContainer().appendChild(makeList(cards))
 }
+function removeTags(str) {
+    if ((str===null) || (str===''))
+    return false;
+    else
+    str = str.toString();
+    return str.replace( /(<([^>]+)>)/ig, '');
+ }
 
 function makeList(cards) {
     const widgetTable=document.createElement('table')
     widgetTable.innerHTML="<tr><th>Type</th><th>Title</th><th>Desc</th><th>Assignee</th></tr>"
     cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
-        try {assi=widget.assignee.userId} catch {assi="n/a"}
+        try {assi=widget.assignee.userId} catch {assi="-"}
         itemLine.innerHTML =               
-         `<td class="stat-list__item-name">${widget.type}</td>` +
-         `<td class="stat-list__item-value">${widget.title.replace( /(<([^>]+)>)/ig, "")}</td>` + 
-         `<td> ${widget.description.replace( /(<([^>]+)>)/ig, "")}</td>` + 
+         `<td class="stat-list__item-name">${widget.type.substring(0,2)}</td>` +
+         `<td class="stat-list__item-value">${removeTags(widget.title)}</td>` + 
+         `<td> ${removeTags(widget.description)}</td>` + 
          `<td> ${assi}</td>` 
          console.log(itemLine)
         widgetTable.appendChild(itemLine)
