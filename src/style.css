@@ -32,7 +32,7 @@
   }
   
   .stat-list {
-    width: 640px;
+    width: 340px;
   }
   
   .stat-list .stat-list__header {
@@ -42,7 +42,7 @@
     padding: 8px 0 0 12px;
     margin-bottom: 20px;
     font-family: Formular, sans-serif;
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 500;
   }
    
@@ -67,7 +67,7 @@
     color: #050038;
     font-weight: bold;
     padding: 0 4px;
-    font-size: 14px;
+    font-size: 10px;
   }
   
   .stat-list .stat-list__title::after,
@@ -82,7 +82,7 @@
   
   .stat-list .stat-list__item {
     font-family: Formular, sans-serif;
-    font-size: 18px;
+    font-size: 8px;
     line-height: 20px;
     margin: 10px 0 10px 0;
     font-weight: normal;
