@@ -67,7 +67,7 @@ async function showAllCards() {
 
 function makeList(cards) {
     const widgetTable=document.createElement('table')
-    widgetTable.innerHTML="<th><td>Type</td><td>Title</td><td>Desc</td><td>Assignee</td></th>"
+    widgetTable.innerHTML="<tr><th>Type</th><th>Title</th><th>Desc</th><th>Assignee</th></tr>"
     cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
         try {assi=widget.assignee.userId} catch {assi="n/a"}
