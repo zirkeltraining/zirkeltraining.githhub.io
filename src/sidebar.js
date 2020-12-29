@@ -70,8 +70,7 @@ function makeList(cards) {
     widgetTable.innerHTML="<th><td>Type</td><td>Title</td><td>Desc</td><td>Assignee</td></th>"
     cards.forEach((widget) => {
         let itemLine=document.createElement('tr')
-        let assi = "n/a"
-        if (exists(widget.assignee.userId)) {assi=widget.assignee.userId}
+        try {assi=widget.assignee.userId} catch {assi="n/a"}
         itemLine.innerHTML =               
          `<td class="stat-list__item-name">${widget.type}</td>` +
          `<td class="stat-list__item-value">${widget.title.replace( /(<([^>]+)>)/ig, "")}</td>` + 
