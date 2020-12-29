@@ -62,7 +62,7 @@ async function showAllCards() {
     //await a=miro.board.widgets.get({type:'CARD', title:'<p>s</p>'})
     cards = await miro.board.widgets.get({ type: 'CARD' })
     console.log(cards)
-    getContainer.appendChild(makeList(cards))
+    getContainer().appendChild(makeList(cards))
 }
 
 function makeList(cards) {
